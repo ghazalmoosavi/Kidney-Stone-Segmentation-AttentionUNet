@@ -133,13 +133,6 @@ The combined loss is well suited for medical segmentation tasks where the foregr
 
 The primary evaluation metric is the Dice score.
 
-Additional metrics include:
-
-* IoU (Jaccard score)
-* Precision
-* Recall
-* Specificity
-
 ---
 
 ## Results
@@ -189,11 +182,22 @@ These results show the model’s ability to localize kidney stone regions with g
 
 ---
 
-## Notes
+### Future Medical Usage
 
-This project is intended for research and educational purposes. Performance may vary depending on dataset quality, annotation consistency, and imaging conditions.
+Kidney stone segmentation can be useful in clinical follow-up and patient monitoring. By outlining the stone area on medical images, the model can help track whether a stone is growing, shrinking, or staying stable over time.
 
----
+### Example Use Case
+A patient may undergo imaging at different points in time. With segmentation, the stone region can be measured consistently across scans, making it easier to compare stone size and observe changes during treatment or follow-up care.
+
+### Potential Benefits
+- monitoring stone growth over time
+- evaluating response to treatment
+- supporting radiology review
+- helping with measurement consistency between scans
+- reducing manual effort in repeated annotations
+
+### Important Note
+This project is intended to support research and clinical workflow assistance, not to replace medical judgment. Any real-world use would require validation by medical professionals and approval before clinical deployment.
 
 <p align="center">
   If this repository was useful, consider starring it.
