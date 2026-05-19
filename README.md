@@ -1,6 +1,4 @@
-Here is a more polished, professional version of the README with a cleaner tone and less “AI-generated” phrasing:
 
-````markdown
 # Kidney Stone Segmentation with 2D Attention U-Net
 
 A deep learning project for binary medical image segmentation using a 2D Attention U-Net to identify kidney stone regions in grayscale medical images.
@@ -200,6 +198,4 @@ This project is intended for research and educational purposes. Performance may 
 <p align="center">
   If this repository was useful, consider starring it.
 </p>
-```
 
-If you want, I can also make it sound even more like a real GitHub repo by adding a cleaner “Installation / Usage / Results / Acknowledgments” section and removing some of the more promotional wording.
