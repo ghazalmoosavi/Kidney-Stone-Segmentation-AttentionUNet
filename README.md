@@ -1,6 +1,9 @@
-# Kidney Stone Segmentation with 2D Attention U-Net 🩺🧠
+Here is a more polished, professional version of the README with a cleaner tone and less “AI-generated” phrasing:
 
-> Deep learning project for **binary medical image segmentation** using a **2D Attention U-Net** to accurately detect kidney stone regions from grayscale medical images.
+````markdown
+# Kidney Stone Segmentation with 2D Attention U-Net
+
+A deep learning project for binary medical image segmentation using a 2D Attention U-Net to identify kidney stone regions in grayscale medical images.
 
 <p align="center">
   <img src="https://img.shields.io/badge/PyTorch-DeepLearning-red?style=for-the-badge&logo=pytorch">
@@ -11,73 +14,47 @@
 
 ---
 
-# 📌 Overview
+## Overview
 
-This project focuses on **automated kidney stone segmentation** using a **2D Attention U-Net** architecture.
+This project focuses on automated kidney stone segmentation using a 2D Attention U-Net architecture. The goal is to localize stone regions accurately in grayscale medical images while maintaining strong performance under class imbalance.
 
-The system is designed to:
-
-✅ Detect kidney stone regions from medical images
-✅ Handle severe class imbalance using **Focal-Dice Loss**
-✅ Improve generalization with strong augmentations
-✅ Use **mixed precision training (AMP)** for faster training
-✅ Support **Test-Time Augmentation (TTA)** during inference
-✅ Visualize predicted masks against ground truth masks
-
----
-
-# 🧠 Why Attention U-Net?
-
-Traditional U-Net architectures treat all spatial information equally.
-**Attention U-Net** improves this by learning to focus on the most relevant regions of the image.
-
-### Key Advantages
-
-* Better localization of small kidney stone regions
-* Improved segmentation precision
-* Reduced background noise influence
-* Strong performance on grayscale medical images
+The pipeline includes:
+- binary segmentation of kidney stone regions
+- focal-dice loss for class imbalance
+- strong data augmentation
+- mixed precision training (AMP)
+- test-time augmentation (TTA)
+- qualitative visualization of predictions against ground truth
 
 ---
 
-# 🎯 Project Goals
+## Model Architecture
 
-This project aims to support:
+The model is based on an encoder-decoder U-Net with attention gates in the skip connections. Attention mechanisms help the network focus on relevant regions and suppress background noise, which is especially useful for detecting small structures.
 
-* Faster medical image analysis
-* Automated kidney stone localization
-* AI-assisted clinical workflows
-* Research in healthcare computer vision
+### Core Components
 
----
-
-# 🏗️ Model Architecture
-
-The model uses an **encoder-decoder Attention U-Net** with skip connections and attention gates.
-
-## Main Components
-
-| Component       | Purpose                         |
-| --------------- | ------------------------------- |
-| `DoubleConv`    | Feature extraction              |
-| `AttentionGate` | Focus on important regions      |
-| `Encoder`       | Downsampling + context learning |
-| `Decoder`       | Upsampling + reconstruction     |
-| `Output Layer`  | Binary segmentation mask        |
+| Component       | Purpose                    |
+|----------------|----------------------------|
+| `DoubleConv`    | Feature extraction         |
+| `AttentionGate` | Relevant region filtering  |
+| `Encoder`      | Context learning           |
+| `Decoder`      | Feature reconstruction     |
+| `Output Layer` | Binary mask prediction     |
 
 ---
 
-# 📂 Dataset Structure
+## Dataset
+
+### Directory Structure
 
 ```bash
 KSSD2025/
 ├── image/   # Input grayscale images
 └── label/   # Ground truth segmentation masks
-```
+````
 
----
-
-# 📊 Dataset Split
+### Split
 
 | Split      | Samples | Percentage |
 | ---------- | ------: | ---------: |
@@ -88,32 +65,32 @@ KSSD2025/
 
 ---
 
-# ⚙️ Training Pipeline
+## Preprocessing
 
-## 🖼️ Preprocessing
+All images and masks are processed with the following steps:
 
-* Resize images to **256 × 256**
-* Normalize pixel values
-* Convert masks to binary format
-
----
-
-## 🔄 Data Augmentation
-
-Strong augmentation is applied to improve robustness:
-
-* Horizontal Flip
-* Vertical Flip
-* Random Rotation (90°)
-* Shift-Scale-Rotate
-* Elastic Transform
-* Grid Distortion
-* Brightness & Contrast Adjustment
-* Gaussian Noise
+* resize to `256 × 256`
+* normalize pixel values
+* convert masks to binary format
 
 ---
 
-# 🚀 Training Configuration
+## Data Augmentation
+
+To improve robustness and generalization, the following augmentations are applied during training:
+
+* horizontal flip
+* vertical flip
+* random rotation
+* shift-scale-rotate
+* elastic transform
+* grid distortion
+* brightness and contrast adjustment
+* Gaussian noise
+
+---
+
+## Training Configuration
 
 | Setting        | Value                 |
 | -------------- | --------------------- |
@@ -130,64 +107,58 @@ Strong augmentation is applied to improve robustness:
 
 ---
 
-# 📉 Loss Function
+## Loss Function
 
-The project uses a hybrid **Focal-Dice Loss**:
+The training objective combines focal loss and dice loss.
 
-## 🔹 Focal Loss
+### Focal Loss
 
-Handles:
+Helps address:
 
 * class imbalance
-* difficult examples
-* small foreground objects
+* hard-to-classify examples
+* small foreground regions
 
-## 🔹 Dice Loss
+### Dice Loss
 
-Optimizes:
+Improves:
 
-* overlap quality
+* overlap between prediction and ground truth
 * segmentation accuracy
 * boundary consistency
 
-This combination is highly effective for **medical segmentation tasks**.
+The combined loss is well suited for medical segmentation tasks where the foreground class is often sparse.
 
 ---
 
-# 📏 Evaluation Metrics
+## Evaluation Metrics
 
-The primary evaluation metric is:
+The primary evaluation metric is the Dice score.
 
-## ✅ Dice Score
+Additional metrics include:
 
-Additional metrics:
-
-* IoU (Jaccard Score)
+* IoU (Jaccard score)
 * Precision
 * Recall
 * Specificity
 
 ---
 
-# 🏆 Results
+## Results
 
-## Validation Performance
+### Validation Performance
 
-| Metric               |     Score |
-| -------------------- | --------: |
-| Best Validation Dice | **91.1%** |
+| Metric               | Score |
+| -------------------- | ----: |
+| Best Validation Dice | 91.1% |
 
----
+### Test Performance
 
-## Test Performance
+| Metric         | Score |
+| -------------- | ----: |
+| Best Test Dice | 90.8% |
 
-| Metric         |     Score |
-| -------------- | --------: |
-| Best Test Dice | **90.8%** |
-
----
-
-## 🔄 Test-Time Augmentation (TTA)
+### Test-Time Augmentation (TTA)
 
 | Metric                | Score |
 | --------------------- | ----: |
@@ -196,31 +167,39 @@ Additional metrics:
 
 ---
 
-# 🖼️ Qualitative Results
+## Qualitative Results
 
-The notebook visualizes:
+The notebook includes visual comparisons of:
 
-* Original medical image
-* Ground truth mask
-* Predicted segmentation mask
+* the original medical image
+* the ground truth mask
+* the predicted mask
 
-These comparisons demonstrate how effectively the model localizes kidney stone regions.
-
----
-
-# 💡 Key Features
-
-✨ Attention-based segmentation
-✨ Medical image augmentation pipeline
-✨ Mixed precision training (AMP)
-✨ Test-Time Augmentation (TTA)
-✨ Focal-Dice hybrid loss
-✨ Dice-based evaluation
-✨ Clean visualization pipeline
+These results show the model’s ability to localize kidney stone regions with good spatial accuracy.
 
 ---
 
+## Key Features
+
+* Attention-based segmentation
+* Medical image augmentation pipeline
+* Mixed precision training (AMP)
+* Test-time augmentation (TTA)
+* Focal-Dice hybrid loss
+* Dice-based evaluation
+* Visualization of predictions
+
+---
+
+## Notes
+
+This project is intended for research and educational purposes. Performance may vary depending on dataset quality, annotation consistency, and imaging conditions.
+
+---
 
 <p align="center">
-  ⭐ If you found this project useful, consider giving it a star!
+  If this repository was useful, consider starring it.
 </p>
+```
+
+If you want, I can also make it sound even more like a real GitHub repo by adding a cleaner “Installation / Usage / Results / Acknowledgments” section and removing some of the more promotional wording.
