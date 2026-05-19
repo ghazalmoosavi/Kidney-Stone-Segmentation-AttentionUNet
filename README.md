@@ -196,8 +196,6 @@ A patient may undergo imaging at different points in time. With segmentation, th
 - helping with measurement consistency between scans
 - reducing manual effort in repeated annotations
 
-### Important Note
-This project is intended to support research and clinical workflow assistance, not to replace medical judgment. Any real-world use would require validation by medical professionals and approval before clinical deployment.
 
 <p align="center">
   If this repository was useful, consider starring it.
