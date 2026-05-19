@@ -197,7 +197,5 @@ A patient may undergo imaging at different points in time. With segmentation, th
 - reducing manual effort in repeated annotations
 
 
-<p align="center">
-  If this repository was useful, consider starring it.
-</p>
+
 
